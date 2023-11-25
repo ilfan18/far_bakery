@@ -1,7 +1,6 @@
 -r base.txt
 elasticsearch==5.5.3
 # Additional dependencies for Heroku, AWS, and Google Cloud deployment
-uwsgi>=2.0.17,<2.1
 whitenoise>=5.0,<5.1
 boto3==1.9.189
 google-cloud-storage==1.20.0
