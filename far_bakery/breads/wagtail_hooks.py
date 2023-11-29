@@ -33,7 +33,7 @@ class CountrySnippetViewSet(SnippetViewSet):
 # See the documentation for SnippetViewSet for more details.
 # https://docs.wagtail.org/en/stable/reference/viewsets.html#snippetviewsetgroup
 class BreadMenuGroup(SnippetViewSetGroup):
-    menu_label = "Bread Categories"
+    menu_label = "Типы хлеба"
     menu_icon = "suitcase"  # change as required
     menu_order = 200  # will put in 3rd place (000 being 1st, 100 2nd)
     items = (

@@ -25,11 +25,11 @@
                     <div class="row">
                         <div class="bread-detail__meta">
                             {% if page.origin %}
-                                <p class="bread-detail__meta-title">Origin</p>
+                                <p class="bread-detail__meta-title">Откуда</p>
                                 <p class="bread-detail__meta-content">{{ page.origin }}</p>
                             {% endif %}
                             {% if page.bread_type %}
-                                <p class="bread-detail__meta-title">Type</p>
+                                <p class="bread-detail__meta-title">Тип</p>
                                 <p class="bread-detail__meta-content">{{ page.bread_type }}</p>
                             {% endif %}
                             {% with ingredients=page.ingredients.all %}

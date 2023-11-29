@@ -169,7 +169,7 @@ class FooterText(
     ]
 
     def __str__(self):
-        return "Footer text"
+        return "Текст подвала"
 
     def get_preview_template(self, request, mode_name):
         return "base.html"
@@ -178,7 +178,7 @@ class FooterText(
         return {"footer_text": self.body}
 
     class Meta(TranslatableMixin.Meta):
-        verbose_name_plural = "Footer Text"
+        verbose_name_plural = "Текст подвала"
 
 
 class StandardPage(Page):
@@ -225,15 +225,15 @@ class HomePage(Page):
         blank=True,
         on_delete=models.SET_NULL,
         related_name="+",
-        help_text="Homepage image",
+        help_text="Изображение главной страницы",
     )
     hero_text = models.CharField(
-        max_length=255, help_text="Write an introduction for the bakery"
+        max_length=255, help_text="Напишите введение для пекарни"
     )
     hero_cta = models.CharField(
         verbose_name="Hero CTA",
         max_length=255,
-        help_text="Text to display on Call to Action",
+        help_text="Текст для отображения в призыве к действию",
     )
     hero_cta_link = models.ForeignKey(
         "wagtailcore.Page",
@@ -241,14 +241,14 @@ class HomePage(Page):
         blank=True,
         on_delete=models.SET_NULL,
         related_name="+",
-        verbose_name="Hero CTA link",
-        help_text="Choose a page to link to for the Call to Action",
+        verbose_name="Ссылка на призыв к действию",
+        help_text="Выберите страницу для ссылки на призыв к действию",
     )
 
     # Body section of the HomePage
     body = StreamField(
         BaseStreamBlock(),
-        verbose_name="Home content block",
+        verbose_name="Блок контента",
         blank=True,
         use_json_field=True,
     )
@@ -260,13 +260,13 @@ class HomePage(Page):
         blank=True,
         on_delete=models.SET_NULL,
         related_name="+",
-        help_text="Promo image",
+        help_text="Промо-изображение",
     )
     promo_title = models.CharField(
-        blank=True, max_length=255, help_text="Title to display above the promo copy"
+        blank=True, max_length=255, help_text="Название для отображения над промо-копией"
     )
     promo_text = RichTextField(
-        null=True, blank=True, max_length=1000, help_text="Write some promotional copy"
+        null=True, blank=True, max_length=1000, help_text="Напишите рекламный текст"
     )
 
     # Featured sections on the HomePage
@@ -275,7 +275,7 @@ class HomePage(Page):
     # Each list their children items that we access via the children function
     # that we define on the individual Page models e.g. BlogIndexPage
     featured_section_1_title = models.CharField(
-        blank=True, max_length=255, help_text="Title to display above the promo copy"
+        blank=True, max_length=255, help_text="Название для отображения над промо-копией"
     )
     featured_section_1 = models.ForeignKey(
         "wagtailcore.Page",
@@ -283,13 +283,12 @@ class HomePage(Page):
         blank=True,
         on_delete=models.SET_NULL,
         related_name="+",
-        help_text="First featured section for the homepage. Will display up to "
-        "three child items.",
+        help_text="Первый избранный раздел главной страницы. Будет отображать до " "трех дочерних элементов.",
         verbose_name="Featured section 1",
     )
 
     featured_section_2_title = models.CharField(
-        blank=True, max_length=255, help_text="Title to display above the promo copy"
+        blank=True, max_length=255, help_text="Название для отображения над промо-копией"
     )
     featured_section_2 = models.ForeignKey(
         "wagtailcore.Page",
@@ -297,13 +296,12 @@ class HomePage(Page):
         blank=True,
         on_delete=models.SET_NULL,
         related_name="+",
-        help_text="Second featured section for the homepage. Will display up to "
-        "three child items.",
-        verbose_name="Featured section 2",
+        help_text="Второй избранный раздел главной страницы. Будет отображать до " "трех дочерних элементов.",
+        verbose_name="Рекомендуемый раздел 2",
     )
 
     featured_section_3_title = models.CharField(
-        blank=True, max_length=255, help_text="Title to display above the promo copy"
+        blank=True, max_length=255, help_text="Название для отображения над промо-копией"
     )
     featured_section_3 = models.ForeignKey(
         "wagtailcore.Page",
@@ -311,9 +309,8 @@ class HomePage(Page):
         blank=True,
         on_delete=models.SET_NULL,
         related_name="+",
-        help_text="Third featured section for the homepage. Will display up to "
-        "six child items.",
-        verbose_name="Featured section 3",
+        help_text="Третий избранный раздел главной страницы. Будет отображать до " "шести дочерних элементов.",
+        verbose_name="Рекомендуемый раздел 3",
     )
 
     content_panels = Page.content_panels + [
@@ -336,7 +333,7 @@ class HomePage(Page):
                 FieldPanel("promo_title"),
                 FieldPanel("promo_text"),
             ],
-            heading="Promo section",
+            heading="Промо-раздел",
         ),
         FieldPanel("body"),
         MultiFieldPanel(
@@ -360,7 +357,7 @@ class HomePage(Page):
                     ]
                 ),
             ],
-            heading="Featured homepage sections",
+            heading="Рекомендуемые разделы главной страницы",
         ),
     ]
 
@@ -376,17 +373,17 @@ class GalleryPage(Page):
     and is intended to show the extensibility of this aspect of Wagtail
     """
 
-    introduction = models.TextField(help_text="Text to describe the page", blank=True)
+    introduction = models.TextField(help_text="Текст, описывающий страницу", blank=True)
     image = models.ForeignKey(
         "wagtailimages.Image",
         null=True,
         blank=True,
         on_delete=models.SET_NULL,
         related_name="+",
-        help_text="Landscape mode only; horizontal width between 1000px and " "3000px.",
+        help_text="Только ландшафтный режим; ширина по горизонтали от 1000 пикселей до " "3000 пикселей.",
     )
     body = StreamField(
-        BaseStreamBlock(), verbose_name="Page body", blank=True, use_json_field=True
+        BaseStreamBlock(), verbose_name="Тело страницы", blank=True, use_json_field=True
     )
     collection = models.ForeignKey(
         Collection,
@@ -394,7 +391,7 @@ class GalleryPage(Page):
         null=True,
         blank=True,
         on_delete=models.SET_NULL,
-        help_text="Select the image collection for this gallery.",
+        help_text="Выберите коллекцию изображений для этой галереи.",
     )
 
     content_panels = Page.content_panels + [
@@ -468,7 +465,7 @@ class GenericSettings(ClusterableModel, BaseGenericSetting):
                 FieldPanel("twitter_url"),
                 FieldPanel("organisation_url"),
             ],
-            "Social settings",
+            "Настройки соц. сетей",
         )
     ]
 
@@ -476,9 +473,9 @@ class GenericSettings(ClusterableModel, BaseGenericSetting):
 @register_setting
 class SiteSettings(BaseSiteSetting):
     title_suffix = models.CharField(
-        verbose_name="Title suffix",
+        verbose_name="Суффикс title",
         max_length=255,
-        help_text="The suffix for the title meta tag e.g. ' | Far-Bakeryy'",
+        help_text="Суффикс метатега заголовка, например. ' | Far-Bakeryy'",
         default="Far-Bakery",
     )
 

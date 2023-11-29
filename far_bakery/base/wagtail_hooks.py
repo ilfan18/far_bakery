@@ -49,7 +49,7 @@ class PersonViewSet(SnippetViewSet):
     # See the documentation for SnippetViewSet for more details
     # https://docs.wagtail.org/en/stable/reference/viewsets.html#snippetviewset
     model = Person
-    menu_label = "People"  # ditch this to use verbose_name_plural from model
+    menu_label = "Люди"  # ditch this to use verbose_name_plural from model
     icon = "group"  # change as required
     list_display = ("first_name", "last_name", "job_title", "thumb_image")
     list_filter = {
@@ -63,7 +63,7 @@ class FooterTextViewSet(SnippetViewSet):
 
 
 class BakerySnippetViewSetGroup(SnippetViewSetGroup):
-    menu_label = "Bakery Misc"
+    menu_label = "Разное"
     menu_icon = "utensils"  # change as required
     menu_order = 300  # will put in 4th place (000 being 1st, 100 2nd)
     items = (PersonViewSet, FooterTextViewSet)
